@@ -7,7 +7,16 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
 
+
 from .serializers import UserRegisterSerializer, UserLoginSerializer
+
+# Root API endpoint for generic welcome message
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+class RootView(APIView):
+    def get(self, request):
+        return Response({"message": "Welcome to sound app"})
 
 class RegisterView(APIView):
     def post(self, request):
